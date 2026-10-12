@@ -1,4 +1,4 @@
-# OptoLab
+# Opto Lab
 
 ### Turn iPhone macro images into eye-image assessments you can inspect and question.
 

@@ -1,0 +1,3 @@
+{
+  "test": "cd site && npm run --silent check"
+}

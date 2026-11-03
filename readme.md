@@ -2,6 +2,8 @@
 
 ### Turn iPhone macro images into eye-image assessments you can inspect and question.
 
+Landing page: https://optolab.juntotechnologies.com/ (source: `site/`).
+
 OptoLab combines an **iPhone 15 Pro, a 15× macro attachment, and GPT-6 Astra** to make a complete capture-to-analysis demo: photograph an eye, inspect candidate anatomical overlays, and get an image-specific report with observations, provisional interpretations, alternative explanations, and ways to check them.
 
 The goal is convenient, repeatable anterior-eye imaging with transparent analysis. The working prototype connects a native SwiftUI app to a Python backend; images and reports can be reopened from an on-device library.

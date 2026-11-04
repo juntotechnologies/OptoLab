@@ -5,13 +5,21 @@ import sys
 import tempfile
 import time
 import urllib.request
+from pathlib import Path
 from playwright.sync_api import sync_playwright
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from uv_python import python_command
+
+SERVER_CODE = (
+    'import sys,uvicorn;from eye_vision.live import create_app;'
+    'uvicorn.run(create_app(sys.argv[1]),host="127.0.0.1",port=int(sys.argv[2]),access_log=False)'
+)
 
 with tempfile.TemporaryDirectory() as folder:
     with socket.socket() as sock:
         sock.bind(('127.0.0.1',0));port=sock.getsockname()[1]
-    process=subprocess.Popen([sys.executable,'-c',
-        'import sys,uvicorn;from eye_vision.live import create_app;uvicorn.run(create_app(sys.argv[1]),host="127.0.0.1",port=int(sys.argv[2]),access_log=False)',folder,str(port)],
+    process=subprocess.Popen(python_command('-c',SERVER_CODE,folder,port),
         stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
     try:
         origin=f'http://127.0.0.1:{port}'
